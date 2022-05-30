@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Rocket Elevator Request A Quote</title>
+		<meta name="description" content="Request A Quote" />
+		<meta name="Author" content="Razak Adegoke" />
+
+		<!-- mobile settings -->
+		<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+		<!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+
+		<!-- WEB FONTS : use %7C instead of | (pipe) -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600%7CRaleway:300,400,500,600,700%7CLato:300,400,400italic,600,700" rel="stylesheet" type="text/css" />
+
+		<!-- CORE CSS -->
+		<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		
+		<!-- THEME CSS -->
+		<link href="assets/css/essentials.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/layout.css" rel="stylesheet" type="text/css" />
+
+		<!-- PAGE LEVEL SCRIPTS -->
+		<link href="assets/css/header-1.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/color_scheme/red.css" rel="stylesheet" type="text/css" id="color_scheme" />
+		<link rel="icon" href="assets/images/rocket_elevator_assets/logo_rocket.png">
+	</head>
+
+	<body class="smoothscroll enable-animation">
+		<!-- wrapper -->
+		<div id="wrapper">
+
+			<!-- Nav-Bar -->
+			<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+				<!-- TOP NAV -->
+				<header id="topNav">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left" href="index_rocket_elevator.html">
+							<img src="assets/images/rocket_elevator_assets/R2.png" alt="logo" />
+						</a>
+
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active"><!-- HOME -->
+										<a href="index.html">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<a href="index.html#services">
+											SERVICES
+										</a>
+									</li>
+									<li><!-- WORK -->
+										<a href="index.html#portfolio">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a href="index.html#news">
+											NEWS
+										</a>
+									</li>
+									<li><!-- CLIENTS -->
+										<a href="index.html#clients">
+											CLIENTS
+										</a>
+									</li>
+									<li><!-- CONTACT -->
+										<a href="index.html#contact">
+											CONTACT
+										</a>
+									</li>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+			</div>
+			<!-- /Nav-Bar -->
+			
+			<!-- QUOTE -->
+			<section>
+				<!-- CONTAINER -->
+				<div class="container">
+
+					<header class="mb-60">
+						<h2 class="heading-title heading-dotted text-center">Professional Services</h2>
+						<p class="text-center">First Choose Your Service : </p>
+					</header>
+
+					<div style="margin-top: -30px;" class="container">
+						<ul class="nav nav-tabs nav-clean d-flex justify-content-center">
+							<li class="nav-item"><a class="nav-link " href="#tab1" data-toggle="tab" onclick="reset()">Residential</a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab" onclick="reset()">Commercial</a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab" onclick="reset()">Corporate</a></li>
+							<li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab" onclick="reset()">Hybrid</a></li>
+						</ul>
+					</div>
+
+					<!-- TAB-CONTENT -->
+					<div class="tab-content">
+						<!-- TAB1 -->
+						<div id="tab1" class="tab-pane active">
+							<!-- FORM -->
+							<div class="col-md-12 col-sm-12">
+
+								<h3 class="text-center" onclick="reser()">RESIDENTIAL</h3>
+
+								<!-- Alert Success -->
+								<div id="alert_success" class="alert alert-success mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Thank You!</strong> Your message successfully sent!
+								</div><!-- /Alert Success -->
+
+
+								<!-- Alert Failed -->
+								<div id="alert_failed" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>[SMTP] Error!</strong> Internal server error!
+								</div><!-- /Alert Failed -->
+
+
+								<!-- Alert Mandatory -->
+								<div id="alert_mandatory" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+								</div><!-- /Alert Mandatory -->
+
+
+								<form action="#" method="post" enctype="multipart/form-data">
+									<fieldset>
+										<input type="hidden" name="action" value="contact_send" />
+
+										<div class="row">
+												<div id="nb_app_residential" class="col-lg-4 col-sm-12">
+													<label for="nb_app_r">Number Of Apartments In The Building *<br><br></label>
+													<input type="number" value="0" class="form-control" name="nb_app_r" id="nb_app_r" onclick="myFunctionElevatorNeededResidential()">
+												</div>
+												<div id="nb_storey_residential" class="col-lg-4 col-sm-12">
+													<label for="nb_storey_r">Number Of Floors Contained In The Building, Excluding Basements *</label>
+													<input type="number" value="0" class="form-control" name="nb_storey_r" id="nb_storey_r" onclick="myFunctionElevatorNeededResidential()">
+												</div>
+												<div id="nb_basement_residential" class="col-lg-4 col-sm-12">
+													<label for="nb_basement_r">Number Of Basements Contained In The Building *</label>
+													<input type="number" value="0" class="form-control" name="nb_basement_r" id="nb_basement_r" onclick="myFunctionElevatorNeededResidential()">
+												</div>
+
+												<div class="col-lg-12 col-sm-12 text-center">
+													<h4>Result : </h4>
+												</div>
+
+												<div id="column_required_residential" class="col-lg-12 col-sm-12 text-center">
+													<label for="column_required_r">Column Required</label>
+													<input type="text" value="0" class="form-control" name="column_required_r" id="column_required_r" readonly disabled>
+												</div>
+										</div>
+										<hr>
+									</fieldset>
+								</form>
+							</div>
+						</div>
+						<!-- /TAB1 -->
+
+						<!-- TAB2 -->	
+						<div id="tab2" class="tab-pane fade">
+							<!-- FORM -->
+							<div class="col-md-12 col-sm-12">
+
+								<h3 class="text-center" onclick="reset()">COMMERCIAL</h3>
+
+								<div id="alert_success" class="alert alert-success mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Thank You!</strong> Your message successfully sent!
+								</div><!-- /Alert Success -->
+
+
+								<!-- Alert Failed -->
+								<div id="alert_failed" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>[SMTP] Error!</strong> Internal server error!
+								</div><!-- /Alert Failed -->
+
+
+								<!-- Alert Mandatory -->
+								<div id="alert_mandatory" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+								</div><!-- /Alert Mandatory -->
+
+
+								<form action="#" method="post" enctype="multipart/form-data">
+									<fieldset>
+										<input type="hidden" name="action" value="contact_send" />
+
+										<div class="row">
+											<div id="nb_business_commercial" class="col-md-4">
+												<label for="nb_business_c">Number Of Distinct Businesses *<br><br></label>
+												<input required type="number" value="0" class="form-control" name="nb_business_c" id="nb_business_c">
+											</div>
+											<div id="nb_floor_commercial" class="col-md-4">
+												<label for="nb_floor_c">Number Of Floors Contained In The Building (excluding basements) *</label>
+												<input required type="number" value="0" class="form-control" name="nb_floor_c" id="nb_floor_c">
+											</div>
+											<div id="nb_basement_commercial" class="col-md-4">
+												<label for="nb_basement_c">Number Of Basements * <br><br></label>
+												<input type="number" value="0" class="form-control" name="nb_basement_c" id="nb_basement_c">
+											</div>
+										</div>
+										<div class="row">
+											<div id="nb_parking_commercial" class="col-md-6">
+												<label for="nb_parking_c">Number Of Parking Space (vailable) *</label>
+												<input required type="number" value="0" class="form-control" name="nb_parking_c" id="nb_parking_c">
+											</div>
+											<div id="nb_elevator_cage_commercial" class="col-md-6">
+												<label for="nb_elevator_cage_c">Number Of Elevator Cages To Be Deployed *</label>
+												<input type="number" value="0" class="form-control" name="nb_elevator_cage_c" id="nb_elevator_cage_c" onclick="myFunctionElevatorNeededCommercial()">
+											</div>
+										</div>
+									</fieldset>
+							</div>
+							<!-- /FORM -->
+						</div>
+						<!-- /TAB2 -->
+
+						<!-- TAB3 -->
+						<div id="tab3" class="tab-pane fade">
+							<!-- FORM -->
+							<div class="col-md-12 col-sm-12">
+
+								<h3 class="text-center" onclick="reset()">CORPORATE</h3>
+
+								<!-- Alert Success -->
+								<div id="alert_success" class="alert alert-success mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Thank You!</strong> Your message successfully sent!
+								</div><!-- /Alert Success -->
+
+
+								<!-- Alert Failed -->
+								<div id="alert_failed" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>[SMTP] Error!</strong> Internal server error!
+								</div><!-- /Alert Failed -->
+
+
+								<!-- Alert Mandatory -->
+								<div id="alert_mandatory" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+								</div><!-- /Alert Mandatory -->
+
+
+								<form action="#" method="post" enctype="multipart/form-data">
+									<fieldset>
+										<input type="hidden" name="action" value="contact_send" />
+
+										<div class="row">
+											<div id="nb_tenant_corporate" class="col-md-4">
+												<label class="font-weight-bold" for="nb_tenant_cr">Number Of Separate Tenant Companies *<br><br></label>
+												<input required type="number" value="0" class="form-control" name="nb_tenant_cr" id="nb_tenant_cr" onclick="myFunctionElevatorNeededCorporate()">
+											</div>
+											<div id="nb_floor_corporate" class="col-md-4">
+												<label class="font-weight-bold" for="nb_floor_cr">Number Of Floors Contained In The Building (excluding basements) *</label>
+												<input required type="number" value="0" class="form-control" name="nb_floor_cr" id="nb_floor_cr" onclick="myFunctionElevatorNeededCorporate()">
+											</div>
+											<div id="nb_basement_corporate" class="col-md-4">
+												<label class="font-weight-bold" for="nb_basement_cr">Number Of Basements Contained In The Building *</label>
+												<input type="number" value="0" class="form-control" name="nb_basement_cr" id="nb_basement_cr" onclick="myFunctionElevatorNeededCorporate()">
+											</div>
+										</div>
+										<div class="row">
+											<div id="nb_parking_corporate" class="col-md-6">
+												<label class="font-weight-bold" for="nb_parking_cr">Number Of Parking Space (available) *</label>
+												<input required type="number" value="0" class="form-control" name="nb_parking_cr" id="nb_parking_cr" onclick="myFunctionElevatorNeededCorporate()">
+											</div>
+											<div id="nb_occupant_corporate" class="col-md-6">
+												<label class="font-weight-bold" for="nb_occupant_cr">Maximum Number Of Occupants Per Floor *</label>
+												<input type="number" value="0" class="form-control" name="nb_occupant_cr" id="nb_occupant_cr" onclick="myFunctionElevatorNeededCorporate()">
+											</div>
+
+											<div class="col-lg-12 col-sm-12 text-center">
+												<h4>Result : </h4>
+											</div>
+
+											<div id="column_required_corporate" class="col-lg-12 col-sm-12 text-center">
+												<label class="font-weight-bold" for="column_required_cr">Column Required</label>
+												<input type="text" value="0" class="form-control" name="column_required_cr" id="column_required_cr" readonly disabled>
+											</div>
+											<div id="column_avg_corporate" class="col-lg-12 col-sm-12 text-center">
+												<label class="font-weight-bold" for="column_avg_cr">Elevators / Columns</label>
+												<input type="text" value="0" class="form-control" name="column_avg_cr" id="column_avg_cr" readonly disabled>
+											</div>
+											<div id="column_final_corporate" class="col-lg-12 col-sm-12 text-center">
+												<label class="font-weight-bold" for="column_final_cr">Final Amount Of Elevator</label>
+												<input type="text" value="0" class="form-control" name="column_final_cr" id="column_final_cr" readonly disabled>
+											</div>
+										</div>
+										<hr>
+									</fieldset>
+								
+								</form>
+							</div>
+							<!-- /FORM -->
+						</div>
+						<!-- /TAB3 -->
+
+						<!-- TAB4 -->
+						<div id="tab4" class="tab-pane fade">
+							<!-- FORM -->
+							<div class="col-md-12 col-sm-12">
+
+								<h3 class="text-center" onclick="reset()">HYBRID</h3>
+
+								<!-- Alert Success -->
+								<div id="alert_success" class="alert alert-success mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Thank You!</strong> Your message successfully sent!
+								</div><!-- /Alert Success -->
+
+
+								<!-- Alert Failed -->
+								<div id="alert_failed" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>[SMTP] Error!</strong> Internal server error!
+								</div><!-- /Alert Failed -->
+
+
+								<!-- Alert Mandatory -->
+								<div id="alert_mandatory" class="alert alert-danger mb-30">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>Sorry!</strong> You need to complete all mandatory (*) fields!
+								</div><!-- /Alert Mandatory -->
+
+
+								<form action="#" method="post" enctype="multipart/form-data">
+									<fieldset>
+										<input type="hidden" name="action" value="contact_send" />
+
+										<div class="row">
+											<div id="nb_business_hybrid" class="col-md-4">
+												<label class="font-weight-bold" for="nb_business_h">The Number Of Distinct Businesses *<br><br></label>
+												<input required type="number" value="0" class="form-control" name="nb_business_h" id="nb_business_h" onclick="myFunctionElevatorNeededHybrid()">
+											</div>
+											<div id="nb_floor_hybrid" class="col-md-4">
+												<label class="font-weight-bold" for="nb_floor_h">The Number Of Floors Contained In the Building (excluding basements) *</label>
+												<input required type="number" value="0" class="form-control" name="nb_floor_h" id="nb_floor_h" onclick="myFunctionElevatorNeededHybrid()">
+											</div>
+											<div id="nb_basement_hybrid" class="col-md-4">
+												<label class="font-weight-bold" for="nb_basement_h">The Number Of Basements Contained In The Building *</label>
+												<input type="number" value="0" class="form-control" name="nb_basement_h" id="nb_basement_h" onclick="myFunctionElevatorNeededHybrid()">
+											</div>
+										</div>
+										<div class="row">
+											<div id="nb_parking_hybrid" class="col-md-4">
+												<label class="font-weight-bold" for="nb_parking_h">Number Of Parking Space (available) *<br><br></label>
+												<input required type="number" value="0" class="form-control" name="nb_parking_h" id="nb_parking_h" onclick="myFunctionElevatorNeededHybrid()">
+											</div>
+											<div id="nb_occupant_hybrid" class="col-md-4">
+												<label class="font-weight-bold" for="nb_occupant_h">Maximum Number Of Occupants Per Floor *<br><br></label>
+												<input type="number" value="0" class="form-control" name="nb_occupant_h" id="nb_occupant_h" onclick="myFunctionElevatorNeededHybrid()">
+											</div>
+											<div id="nb_hour_hybrid" class="col-md-4">
+												<label class="font-weight-bold" for="nb_hour_h">The Number Of Hours Of Activity Of The Building (the maximum being 24) *</label>
+												<input type="number" value="0" class="form-control" name="nb_hour_h" id="nb_hour_h" onclick="myFunctionElevatorNeededHybrid()">
+											</div>
+
+											<div class="col-lg-12 col-sm-12 text-center">
+												<h4>Result : </h4>
+											</div>
+
+											<div id="column_required_hybrid" class="col-lg-12 col-sm-12 text-center">
+												<label class="font-weight-bold" for="column_required_h">Column Required</label>
+												<input type="text" value="0" class="form-control" name="column_required_h" id="column_required_h" readonly disabled>
+											</div>
+											<div id="column_avg_hybrid" class="col-lg-12 col-sm-12 text-center">
+												<label class="font-weight-bold" for="column_avg_h">Elevators / Columns, Rounded UP</label>
+												<input type="text" value="0" class="form-control" name="column_avg_h" id="column_avg_h" readonly disabled>
+											</div>
+											<div id="column_final_hybrid" class="col-lg-12 col-sm-12 text-center">
+												<label class="font-weight-bold" for="column_final_h">Final Amount Of Elevator</label>
+												<input type="text" value="0" class="form-control" name="column_final_h" id="column_final_h" readonly disabled>
+											</div>
+										</div>
+										<hr>
+									</fieldset>
+								</form>
+							</div>
+							<!-- /FORM -->
+						</div>
+						<!-- /TABS4-->
+					</div>	
+					<!-- /TAB-CONTENT -->
+
+					<!-- ELEVATOR NEEDED SECTION -->
+					<section>
+						<fieldset style="margin-top: -100px; ">
+							<div class="col-md-12 text-center">
+								<label class="font-weight-bold" for="elevator_needed">Elevator Needed</label>
+								<input type="text" class="form-control" id="elevator_needed" name="elevator_needed" value="0" readonly disabled>
+							</div>
+						</fieldset>
+					</section>
+					<!-- /ELEVATOR NEEDED SECTION -->
+
+					<!-- PRODUCT LINE SECTION-->
+					<section>
+						<fieldset style="margin-top: -165px;">
+							<h4 class="text-center">Select Your Product Line : </h4>
+							<form>
+								<div class="row">
+									<div class="col-md-4 text-center">
+										<input type="radio" id="standard" name="fav_language" value="7565" class="form-control" value="7565" >
+										<label for="standard">STANDARD</label><br>
+									</div>
+									<div class="col-md-4 text-center">
+										<input type="radio" id="premium" name="fav_language" value="12345" class="form-control" value="12345">
+										<label for="premium">PREMIUM</label><br>
+									</div>
+									<div class="col-md-4 text-center">
+										<input type="radio" id="excelium" name="fav_language" value="15400" class="form-control" value="15400">
+										<label for="excelium">EXCELIUM</label>
+									</div>
+								</div>	
+							</form>
+						</fieldset>
+					</section>
+					<!-- /PRODUCT LINE SECTION-->
+					
+					<!-- RESUTAT SECTION -->
+					<fieldset style="margin-top: -180px;">
+						<h4 class="text-center">Final Cost :</h4>
+						<div class="row mt-40">
+							<!--
+							<div class="col-md-6">
+								<label class="font-weight-bold" for="elevator-amount">Elevator Needed</label>
+								<input type="text" class="form-control" id="elevator-amount" name="elevator-amount" readonly disabled>
+							</div>
+							-->
+							<div class="col-md-12">
+								<label class="font-weight-bold" for="elevator-unit-price">Price Of Each Elevator</label>
+								<input type="text"  class="form-control"id="elevator-unit-price" name="elevator-unit-price" readonly disabled>
+							</div>
+							<div class="col-md-12">
+								<label class="font-weight-bold" for="elevator-total-price">Total Price Of Elevator</label>
+								<input type="text" class="form-control" id="elevator-total-price" name="elevator-total-price" readonly disabled>
+							</div>
+							<div class="col-md-12"> 
+								<label class="font-weight-bold" for="installation-fees">installation Fees</label>
+								<input type="text" class="form-control" id="installation-fees" name="installation-fees" readonly disabled>
+							</div>
+							<div class="col-md-12 text-center mt-50">
+								<label class="font-weight-bold" for="final-price">Total Price</label>
+								<input type="text" class="form-control" id="final-price" name="final-price" readonly disabled>
+							</div>
+						</div>
+					</fieldset>
+					<!-- /RESUTAT SECTION-->
+
+				</div>
+				<!-- /CONTAINER -->
+			</section>
+			<!-- /QUOTE -->
+
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+
+					<div class="row">
+						<div class="col-md-4">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+							<p>We have the conviction that we create the most innovative and reliable products on the market. Contact us today for any questions you might have.</p>
+							<h2>(418) 555-1234</h2>
+						</div>
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+
+							<h3 class="letter-spacing-1">VISIT US</h3>
+	
+							<p>
+								<span class="block"><strong><i class="fa fa-map-marker"></i> Address:</strong> 4468 Wellington St Suite 204, Verdun, Quebec H4G 1W5</span>
+								<span class="block"><strong><i class="fa fa-phone"></i> Phone:</strong> <a href="tel:438-555-1234">(418) 555-1234</a></span>
+								<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:info@codeboxx.biz">info@codeboxx.biz</a></span>
+							</p>
+	
+						</div>
+					</div>
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>
+			<!-- /Footer -->
+
+		</div>
+		<!-- /wrapper -->
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+		<!-- PRELOADER -->
+		<div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div>
+		<!-- /PRELOADER -->
+
+		<!-- JAVASCRIPT FILES -->
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+
+		<script src="assets/js/scripts.js"></script>
+		<script src="assets/js/quote_js/script.js"></script>
+
+	</body>
+</html>

@@ -20,7 +20,7 @@ function selectTab(tab){
     for (var i = 0; i < tabcontent.length; i++) {
 
         tabcontent[i].style.display = "none";
-        
+
     }
 
     document.querySelector(tab).style.display = "block";
@@ -62,5 +62,7 @@ r_all_input.forEach(item => {
     })
 
   })
+
+  //Corporate section 
   
   

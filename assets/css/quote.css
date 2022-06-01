@@ -1,0 +1,29 @@
+#nav-quote{
+    display: flex;
+    justify-content: center;
+}
+
+#nav-quote ul li{
+    list-style: none; 
+    padding: 0 20px;
+    display: inline-block;
+    font-weight: 700;
+}
+
+#nav-quote ul {
+    list-style: none; 
+    padding: 0 0;
+    display: inline-block;
+}
+
+.tab-content .content {
+    display: none;
+}
+
+.tab-content .residential.content {
+    display: block;
+}
+
+.tab-content #residential {
+    display: inline-block;
+}

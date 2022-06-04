@@ -39,7 +39,7 @@ var elevartoCom = document.querySelector(".commercial #number-of-elevators");
 
 elevartoCom.addEventListener('change', () => {
     elevatorNeeded.value = elevartoCom.value;
-    
+    cost();
 })
 
 //==Residential section==
@@ -162,141 +162,131 @@ h_all_input.forEach(item =>
 //-- Budget section ==
 
 //Display function
+function cost(){
+    var product_line = document.querySelectorAll(".product-line");
 
-var product_line = document.querySelectorAll(".product-line");
+    var x, y, z;
 
-product_line.forEach(item => 
+    if (product_line[0].checked == true){
+        product_line[0].value = 7565;
+        y = x * 0.10;
+        z = x + y;
+        if (cr_column_final_cr.value > 0) {
+            x = parseInt(cr_column_final_cr.value) * product_line[0].value;
+            y = x * 0.10;
+            z = x + y;
 
-    item.addEventListener('change', item => {
-        var x, y, z;
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
 
-        switch (item.currentTarget.className) {
-            case "form-control reset product-line standard":
-                item.currentTarget.value = 7565;
-                y = x * 0.10;
-                z = x + y;
-                if (cr_column_final_cr.value > 0) {
-                    x = parseInt(cr_column_final_cr.value) * item.currentTarget.value;
-                    y = x * 0.10;
-                    z = x + y;
+        } else if (h_column_final_h.value > 0) {
+            x = parseInt(h_column_final_h.value.value) * product_line[0].value;
+            y = x * 0.10;
+            z = x + y;
 
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
 
-                } else if (h_column_final_h.value > 0) {
-                    x = parseInt(h_column_final_h.value.value) * item.currentTarget.value;
-                    y = x * 0.10;
-                    z = x + y;
+        } else {   
+            x = parseInt(elevatorNeeded.value) * product_line[0].value;
+            y = x * 0.10;
+            z = x + y;
+            
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
 
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
-
-                } else {   
-                    x = parseInt(elevatorNeeded.value) * item.currentTarget.value;
-                    y = x * 0.10;
-                    z = x + y;
-                    
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
-
-                }
-                
-                break;
-            case "form-control reset product-line premium":
-                item.currentTarget.value = 12345;
-                x = parseInt(elevatorNeeded.value) * item.currentTarget.value;
-                y = x * 0.13;
-                z = x + y;
-
-                if (cr_column_final_cr.value > 0) {
-                    x = parseInt(cr_column_final_cr.value) * item.currentTarget.value;
-                    y = x * 0.13;
-                    z = x + y;
-
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
-
-                } else if (h_column_final_h.value > 0) {
-                    x = parseInt(h_column_final_h.value.value) * item.currentTarget.value;
-                    y = x * 0.13;
-                    z = x + y;
-
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
-
-                } else {   
-                    x = parseInt(elevatorNeeded.value) * item.currentTarget.value;
-                    y = x * 0.13;
-                    z = x + y;
-
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
-
-                }
-                break;
-            case "form-control reset product-line excelium":
-                item.currentTarget.value = 15400;
-                x = parseInt(elevatorNeeded.value) * item.currentTarget.value;
-                y = x * 0.16;
-                z = x + y;
-                
-                if (cr_column_final_cr.value > 0) {
-                    x = parseInt(cr_column_final_cr.value) * item.currentTarget.value;
-                    y = x * 0.16;
-                    z = x + y;
-
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
-
-                } else if (h_column_final_h.value > 0) {
-                    x = parseInt(h_column_final_h.value.value) * item.currentTarget.value;
-                    y = x * 0.16;
-                    z = x + y;
-
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
-
-                } else {   
-                    x = parseInt(elevatorNeeded.value) * item.currentTarget.value;
-                    y = x * 0.16;
-                    z = x + y;
-
-                    //Display Section
-                    document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-                    document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-                    document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-                    document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
-
-                }
-            default:
-                break;
         }
-    })
-)
+        
+    }else if (product_line[1].checked == true){
+        product_line[1].value = 12345;
+        x = parseInt(elevatorNeeded.value) * product_line[1].value.value;
+        y = x * 0.13;
+        z = x + y;
 
+        if (cr_column_final_cr.value > 0) {
+            x = parseInt(cr_column_final_cr.value) * product_line[1].value;
+            y = x * 0.13;
+            z = x + y;
+
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
+
+        } else if (h_column_final_h.value > 0) {
+            x = parseInt(h_column_final_h.value.value) * product_line[1].value;
+            y = x * 0.13;
+            z = x + y;
+
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
+
+        } else {   
+            x = parseInt(elevatorNeeded.value) * product_line[1].value;
+            y = x * 0.13;
+            z = x + y;
+
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
+
+        }
+    } else if (product_line[2].checked == true) {
+        product_line[2].value = 15400;
+        x = parseInt(elevatorNeeded.value) * product_line[2].value.value;
+        y = x * 0.16;
+        z = x + y;
+        
+        if (cr_column_final_cr.value > 0) {
+            x = parseInt(cr_column_final_cr.value) * product_line[2].value.value;
+            y = x * 0.16;
+            z = x + y;
+
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
+
+        } else if (h_column_final_h.value > 0) {
+            x = parseInt(h_column_final_h.value.value) * product_line[2].value.value;
+            y = x * 0.16;
+            z = x + y;
+
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
+
+        } else {   
+            x = parseInt(elevatorNeeded.value) * product_line[2].value.value;
+            y = x * 0.16;
+            z = x + y;
+
+            //Display Section
+            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
+
+        }
+    }
+}
 
 

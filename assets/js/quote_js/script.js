@@ -13,6 +13,7 @@ var h_all_input, h_floors, h_basements, h_occupants, h_column_required_h, h_colu
 //All input
 var quote_all_input = document.querySelectorAll(".reset");
 
+
 //Select tabs
 function selectTab(tab){
 
@@ -64,17 +65,17 @@ r_all_input.forEach(item => {
 
         if(r_total_floors <= 20){
             //Display Section
-            elevatorNeeded.value =  Math.ceil(r_av_apps / 6) * Math.ceil(r_total_floors / 20);
+            elevatorNeeded.value = (Number.isNaN(Math.ceil(r_av_apps / 6) * Math.ceil(r_total_floors / 20))) ? 0 : Math.ceil(r_av_apps / 6) * Math.ceil(r_total_floors / 20);
             r_column_required.value = Math.ceil(r_total_floors/ 20);
-
+            cost();
         }else{
             //Display Section
-            elevatorNeeded.value = Math.ceil(r_av_apps / 6) * Math.ceil((r_total_floors / 20) + 1);
-            r_column_required.value = Math.ceil((r_total_floors /20) + 1);
-
+            elevatorNeeded.value = (Number.isNaN(Math.ceil(r_av_apps / 6) * Math.ceil((r_total_floors / 20) + 1))) ? 0 : Math.ceil(r_av_apps / 6) * Math.ceil((r_total_floors / 20) + 1);
+            r_column_required.value = Math.ceil((r_total_floors /20) + 1); 
+            cost();
         }
     })
-
+    
 })
 
 //==Corporate section==
@@ -110,9 +111,10 @@ cr_all_input.forEach(item =>
 
         //Display Section
         elevatorNeeded.value = cr_elevator_required;
-        cr_column_avg_cr.value = cr_avg_elevator_per_columns;
+        cr_column_avg_cr.value = (Number.isNaN(cr_avg_elevator_per_columns)) ? 0 : cr_avg_elevator_per_columns;
         cr_column_required_cr.value = cr_columns_required;
-        cr_column_final_cr.value = cr_final_amount_elevator;
+        cr_column_final_cr.value = (Number.isNaN(cr_final_amount_elevator)) ? 0 : cr_final_amount_elevator;
+        cost();
     })
 )
 
@@ -150,9 +152,10 @@ h_all_input.forEach(item =>
 
         //Display Section
         elevatorNeeded.value = h_elevator_required;
-        h_column_avg_h.value = h_avg_elevator_per_columns;
+        h_column_avg_h.value = (Number.isNaN(h_avg_elevator_per_columns)) ? 0 : h_avg_elevator_per_columns;
         h_column_required_h.value = h_columns_required;
-        h_column_final_h.value = h_final_amount_elevator;
+        h_column_final_h.value = (Number.isNaN(h_final_amount_elevator)) ? 0 : h_final_amount_elevator;
+        cost();
     })
 )
 
@@ -165,50 +168,52 @@ h_all_input.forEach(item =>
 function cost(){
     var product_line = document.querySelectorAll(".product-line");
 
-    var x, y, z;
+    var x, y, z, t;
 
     if (product_line[0].checked == true){
         product_line[0].value = 7565;
         y = x * 0.10;
         z = x + y;
+        
         if (cr_column_final_cr.value > 0) {
             x = parseInt(cr_column_final_cr.value) * product_line[0].value;
             y = x * 0.10;
             z = x + y;
+            t = parseInt(z / parseInt(cr_column_final_cr.value));
 
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
 
         } else if (h_column_final_h.value > 0) {
-            x = parseInt(h_column_final_h.value.value) * product_line[0].value;
+            x = parseInt(h_column_final_h.value) * product_line[0].value;
             y = x * 0.10;
             z = x + y;
+            t = parseInt(z / parseInt(h_column_final_h.value));
 
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value)));
 
         } else {   
             x = parseInt(elevatorNeeded.value) * product_line[0].value;
             y = x * 0.10;
             z = x + y;
+            t = parseInt(z / parseInt(elevatorNeeded.value));
             
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
-
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
         }
         
     }else if (product_line[1].checked == true){
         product_line[1].value = 12345;
-        x = parseInt(elevatorNeeded.value) * product_line[1].value.value;
         y = x * 0.13;
         z = x + y;
 
@@ -216,74 +221,80 @@ function cost(){
             x = parseInt(cr_column_final_cr.value) * product_line[1].value;
             y = x * 0.13;
             z = x + y;
-
+            t = parseInt(z / parseInt(cr_column_final_cr.value));
+            
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
+
 
         } else if (h_column_final_h.value > 0) {
-            x = parseInt(h_column_final_h.value.value) * product_line[1].value;
+            x = parseInt(h_column_final_h.value) * product_line[1].value;
             y = x * 0.13;
             z = x + y;
+            t = parseInt(z / parseInt(h_column_final_h.value));
 
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value)));
 
         } else {   
             x = parseInt(elevatorNeeded.value) * product_line[1].value;
             y = x * 0.13;
             z = x + y;
+            t = parseInt(z / parseInt(elevatorNeeded.value));
 
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
 
         }
     } else if (product_line[2].checked == true) {
         product_line[2].value = 15400;
-        x = parseInt(elevatorNeeded.value) * product_line[2].value.value;
         y = x * 0.16;
         z = x + y;
         
         if (cr_column_final_cr.value > 0) {
-            x = parseInt(cr_column_final_cr.value) * product_line[2].value.value;
+            x = parseInt(cr_column_final_cr.value) * product_line[2].value;
             y = x * 0.16;
             z = x + y;
+            t = parseInt(z / parseInt(cr_column_final_cr.value));
 
             //Display Section
-            document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
-            document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
-            document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
+            document.querySelector("#elevator-total-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
+            document.querySelector("#installation-fees").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
+            document.querySelector("#final-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(cr_column_final_cr.value)));
 
         } else if (h_column_final_h.value > 0) {
-            x = parseInt(h_column_final_h.value.value) * product_line[2].value.value;
+            x = parseInt(h_column_final_h.value) * product_line[2].value;
             y = x * 0.16;
             z = x + y;
+            t = parseInt(z / parseInt(h_column_final_h.value));
 
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value.value)));
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(h_column_final_h.value)));
 
         } else {   
-            x = parseInt(elevatorNeeded.value) * product_line[2].value.value;
+            x = parseInt(elevatorNeeded.value) * product_line[2].value;
             y = x * 0.16;
             z = x + y;
+            t = parseInt(z / parseInt(elevatorNeeded.value));
 
             //Display Section
             document.querySelector("#elevator-total-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(x);
             document.querySelector("#installation-fees").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(y);
             document.querySelector("#final-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(z);
-            document.querySelector("#elevator-unit-price").value = Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
+            document.querySelector("#elevator-unit-price").value = (Number.isNaN(t)) ? Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(0) : Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(parseInt(z / parseInt(elevatorNeeded.value)));
 
         }
     }

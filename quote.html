@@ -227,11 +227,11 @@
 									<div class="row">
 										<div id="nb_parking_corporate" class="col-md-6">
 											<label class="font-weight-bold" for="number-of-parking-spots">Number Of Parking Space (available) *</label>
-											<input required type="number" value="0" class="form-control item" name="number-of-parking-spots" id="number-of-parking-spots" min="0">
+											<input required type="number" value="0" class="form-control item reset" name="number-of-parking-spots" id="number-of-parking-spots" min="0">
 										</div>
 										<div id="nb_occupant_corporate" class="col-md-6">
-											<label class="font-weight-bold" for="maximum-occupancy"> resetNumber Of Occupants Per Floor *</label>
-											<input type="number" value="0" class="form-control item" name="maximum-occupancy" id="maximum-occupancy" min="0">
+											<label class="font-weight-bold" for="maximum-occupancy"> Number Of Occupants Per Floor *</label>
+											<input type="number" value="0" class="form-control item reset" name="maximum-occupancy" id="maximum-occupancy" min="0">
 										</div>
 
 										<div class="col-lg-12 col-sm-12 text-center">
@@ -343,15 +343,15 @@
 						<form>
 							<div class="row">
 								<div class="col-md-4 text-center">
-									<input type="radio" id="standard" name="fav_language" value="7565" class="form-control reset product-line standard" value="7565" >
+									<input type="radio" id="standard" name="fav_language" value="7565" class="form-control reset product-line standard" value="7565" onclick="cost()" >
 									<label for="standard">STANDARD</label><br>
 								</div>
 								<div class="col-md-4 text-center">
-									<input type="radio" id="premium" name="fav_language" value="12345" class="form-control reset product-line premium" value="12345">
+									<input type="radio" id="premium" name="fav_language" value="12345" class="form-control reset product-line premium" value="12345" onclick="cost()">
 									<label for="premium">PREMIUM</label><br>
 								</div>
 								<div class="col-md-4 text-center">
-									<input type="radio" id="excelium" name="fav_language" value="15400" class="form-control reset product-line excelium" value="15400">
+									<input type="radio" id="excelium" name="fav_language" value="15400" class="form-control reset product-line excelium" value="15400" onclick="cost()">
 									<label for="excelium">EXCELIUM</label>
 								</div>
 							</div>	

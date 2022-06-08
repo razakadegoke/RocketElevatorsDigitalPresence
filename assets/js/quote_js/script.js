@@ -114,7 +114,7 @@ cr_all_input.forEach(item =>
         cr_column_avg_cr.value = (Number.isNaN(cr_avg_elevator_per_columns)) ? 0 : cr_avg_elevator_per_columns;
         cr_column_required_cr.value = cr_columns_required;
         cr_column_final_cr.value = (Number.isNaN(cr_final_amount_elevator)) ? 0 : cr_final_amount_elevator;
-        cost();
+        cost(); 
     })
 )
 

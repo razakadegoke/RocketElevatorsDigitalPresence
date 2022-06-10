@@ -66,12 +66,12 @@ r_all_input.forEach(item => {
         if(r_total_floors <= 20){
             //Display Section
             elevatorNeeded.value = (Number.isNaN(Math.ceil(r_av_apps / 6) * Math.ceil(r_total_floors / 20))) ? 0 : Math.ceil(r_av_apps / 6) * Math.ceil(r_total_floors / 20);
-            r_column_required.value = Math.ceil(r_total_floors/ 20);
+            r_column_required.value = (r_total_floors < 0) ? 0 : Math.ceil(r_total_floors/ 20);
             cost();
         }else{
             //Display Section
             elevatorNeeded.value = (Number.isNaN(Math.ceil(r_av_apps / 6) * Math.ceil((r_total_floors / 20) + 1))) ? 0 : Math.ceil(r_av_apps / 6) * Math.ceil((r_total_floors / 20) + 1);
-            r_column_required.value = Math.ceil((r_total_floors /20) + 1); 
+            r_column_required.value = (r_total_floors < 0) ? 0 : Math.ceil((r_total_floors /20) + 1); 
             cost();
         }
     })
